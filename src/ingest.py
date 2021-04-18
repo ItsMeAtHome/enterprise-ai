@@ -5,7 +5,6 @@ from tqdm import tqdm
 from src.config import *
 from src.log import log_ingest
 
-
 def get_data(keys, key_names, directory_data, directory_output):
     ''' Read source data into a tabular data structure '''
     # Initialise dataframe with desired column names
@@ -46,9 +45,9 @@ def clean_data(data, keys, key_types, directory_output):
 def prepare_data(data, directory_output):
     ''' Perform feature transformations to prepare data for model '''
     data = data.copy()
-    # Generate date from time-related features
+    # Generate date from time related features
     data['date'] = pd.to_datetime(data[['year', 'month', 'day']])
-    # Remove time-related features once date has been generated
+    # Remove time related features once date has been generated
     data.drop(['year', 'month', 'day'], axis=1, inplace=True)
     # Remove nominal features containing IDs
     data.drop(['invoice_id', 'customer_id', 'stream_id'], axis=1, inplace=True)

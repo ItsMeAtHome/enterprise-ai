@@ -3,24 +3,23 @@ from flask import Flask, request, jsonify
 from src.config import *
 from src.model import model
 
-
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Check date parameter in request
+    # Check date parameter in requesta
     if 'date' in request.args:
         date = request.args['date']
     else:
         return "Error: No date parameter was provided."
-    # Check country parameter in request
+    # Check country parameter in requesta
     if 'country' in request.args:
         country = request.args['country']
     else:
         country = None
-    # Check duration parameter in request
+    # Check duration parameter in requesta
     if 'duration' in request.args:
         duration = request.args['duration']
         if duration == '':

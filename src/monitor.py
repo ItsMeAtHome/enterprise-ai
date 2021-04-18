@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.stats import entropy, wasserstein_distance
 
+
 def get_wasserstain_distance(data, batch_size=1000, confidence=0.05):
     wasserstein_data = np.zeros(batch_size)
     for batch in range(batch_size):

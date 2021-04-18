@@ -1,6 +1,7 @@
 import os, requests, unittest
 from src.config import *
 
+
 class AppTest(unittest.TestCase):
 
     def test_01_app_predict_country(self):

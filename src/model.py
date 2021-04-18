@@ -7,12 +7,10 @@ from src.config import *
 from src.ingest import ingest
 from src.log import log_train, log_predict
 
-
 def get_revenue_country(revenue, country):
     ''' Get daily revenue data for given country '''
     revenue_country = revenue[revenue['country'] == country].reset_index()[['date', 'revenue']]
     return revenue_country
-
 
 def train_ARIMA_model(data, order, directory_models, country=None):
     ''' Train an auto-regressive, integrating, moving-average (ARIMA) model '''
@@ -24,7 +22,6 @@ def train_ARIMA_model(data, order, directory_models, country=None):
         arima_model.save(directory_models + 'arima.pickle')
     log_train('arima', data.shape, {})
     return arima_model
-
 
 def train_SARIMA_model(data, order, seasonal_order, directory_models, country=None):
     ''' Train a seasonal auto-regressive, integrating, moving-average (SARIMA) model '''
@@ -41,7 +38,6 @@ def train_SARIMA_model(data, order, seasonal_order, directory_models, country=No
     log_train('sarima', data.shape, {})
     return sarima_model
 
-
 def predict(model, name, start, end, actual=None):
     ''' Generate forecasted predictions using trained model '''
     predictions = model.predict(start=start, end=end, dynamic=True)
@@ -52,7 +48,6 @@ def predict(model, name, start, end, actual=None):
         {'revenue_predicted': predictions_sum, 'revenue_actual': actual}
     )
     return predictions, predictions_sum
-
 
 def model(date, duration=30, country=None):
     if not os.path.exists(DIRECTORY_MODELS):

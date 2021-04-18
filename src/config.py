@@ -5,6 +5,7 @@ DIRECTORY_MODELS = './models/'
 DIRECTORY_LOGS = './logs/'
 APP_BASE_URL = 'http://127.0.0.1/'
 
+
 keys = (
     'invoice_id',
     'customer_id',

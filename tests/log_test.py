@@ -2,6 +2,7 @@ import os, unittest
 from src.config import *
 from src.log import log_ingest, log_train, log_predict
 
+
 class LogTest(unittest.TestCase):
 
     def test_01_log_ingest(self):

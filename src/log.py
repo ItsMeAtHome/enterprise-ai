@@ -2,7 +2,6 @@ import csv, os, uuid
 from datetime import datetime
 from src.config import VERSION, DIRECTORY_LOGS
 
-
 def log_common(log_file, log_data, headers, directory_logs):
     header=False
     if not os.path.exists(directory_logs):
@@ -14,7 +13,6 @@ def log_common(log_file, log_data, headers, directory_logs):
         if header:
             writer.writerow(headers)
         writer.writerow(log_data)
-
 
 def log_ingest(shape):
     now = datetime.now()
